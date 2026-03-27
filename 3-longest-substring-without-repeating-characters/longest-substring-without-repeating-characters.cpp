@@ -1,20 +1,35 @@
 class Solution {
 public:
-    int lengthOfLongestSubstring(std::string s) {
-        int maxlen = 0; // Initialize maxlen to 0
-        unordered_set<char> visited; // Use unordered_set to track visited characters
-        int i = 0, j = 0; // Two pointers for the sliding window
+    int lengthOfLongestSubstring(string s) {
+
+        if(s.size() == 0)
+            return 0;
         
-        while (j < s.size()) {
-            if (visited.find(s[j]) == visited.end()) { // If s[j] is not in the set
-                visited.insert(s[j]);
-                maxlen = max(maxlen, j - i + 1); // Update maxlen
-                j++; // Expand the window
-            } else {
-                visited.erase(s[i]); // Remove s[i] from the set
-                i++; // Shrink the window
+        int len = s.size();
+        int max_len = 1;
+        int curr_len = 1;
+        int count[256]; // store all characters in ASCII including a-z and A-Z
+
+        for(int i=0; i<len-1;i++){
+            fill(begin(count), end(count), 0); 
+            count[s[i]] +=1;
+            curr_len = 1;
+            for(int j=i+1; j<len; j++){
+                count[s[j]] +=1;
+                if(count[s[j]] ==1){
+                    curr_len +=1;
+                    max_len = max(max_len, curr_len);
+                }
+
+                else{
+                    break;
+                }
             }
+            
+            }
+
+        return max_len;
+
         }
-        return maxlen;
-    }
-};
+
+    };
