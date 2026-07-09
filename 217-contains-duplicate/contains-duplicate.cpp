@@ -1,18 +1,23 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        unordered_set <int> look;
+        
+        unordered_set<int> my_set;
 
-        for(int i=0;i<nums.size();i++){
-            if(look.find(nums[i])!=look.end()){
-                return true;
-                
-            }
+        for(int i=0; i<nums.size(); i++){
 
-            else{
-                look.insert(nums[i]);
-            }
+            my_set.insert(nums[i]);
         }
-        return false;
+
+        if (my_set.size() < nums.size()){
+            return true;
+        }
+
+        else{
+            return false;
+        }
+
     }
+
+    
 };
