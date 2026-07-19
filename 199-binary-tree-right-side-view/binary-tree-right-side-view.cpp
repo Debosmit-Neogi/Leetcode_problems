@@ -49,6 +49,8 @@ public:
 
             }
 
+            // push the last element in the level -> if multiple nodes it will mean right most node, 
+            // if single node in level it will also be viewed from right side
             ans.push_back(node_level[q_len-1]);
 
         }
