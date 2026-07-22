@@ -1,3 +1,5 @@
+/// *************************************************** BRUTE FORCE SOLUTION *************************************************************************
+
 // class Solution {
 // public:
 //     bool equal_vector(vector<int> a, vector<int>b){
