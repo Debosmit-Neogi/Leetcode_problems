@@ -1,0 +1,361 @@
+# Balanced Binary Tree
+
+## Problem Statement
+
+Given the root of a binary tree, determine whether the tree is **height-balanced**.
+
+A binary tree is height-balanced if, for every node in the tree, the difference between the heights of its left and right subtrees is **at most 1**.
+
+### Example
+
+```text
+        3
+       / \
+      9  20
+         / \
+        15  7
+```
+
+The tree is balanced because the height difference between the left and right subtrees of every node is at most `1`.
+
+### Unbalanced Example
+
+```text
+        1
+       /
+      2
+     /
+    3
+```
+
+This tree is not balanced because the height difference at node `1` is greater than `1`.
+
+---
+
+## Approach
+
+There are two common approaches:
+
+1. **BFS + Height Calculation**
+2. **DFS + Height Calculation**
+
+The BFS approach in the Python code repeatedly calculates the height of the left and right subtrees for every node. This works, but it is inefficient because the same subtrees are traversed multiple times.
+
+A better approach is **Bottom-Up DFS**.
+
+The idea is:
+
+* Calculate the height of the left subtree.
+* Calculate the height of the right subtree.
+* If the difference between the heights is greater than `1`, the tree is unbalanced.
+* If either subtree is already unbalanced, immediately return an indicator that the tree is unbalanced.
+* Otherwise, return the height of the current subtree.
+
+---
+
+## Important Optimization
+
+Instead of calculating the height separately for every node, we calculate the height **while checking whether the tree is balanced**.
+
+We use `-1` as a special value:
+
+```text
+-1 → subtree is unbalanced
+>= 0 → subtree is balanced and the value represents its height
+```
+
+This allows us to detect an unbalanced subtree and stop processing immediately.
+
+---
+
+## C++ Solution
+
+```cpp
+class Solution {
+public:
+
+    // Returns:
+    // -1 if the tree is unbalanced
+    // height of the tree otherwise
+    int checkHeight(TreeNode* root) {
+
+        // Empty tree is balanced
+        // Its height is 0
+        if (root == nullptr)
+            return 0;
+
+        // Calculate height of left subtree
+        int leftHeight = checkHeight(root->left);
+
+        // If left subtree is unbalanced,
+        // no need to continue
+        if (leftHeight == -1)
+            return -1;
+
+        // Calculate height of right subtree
+        int rightHeight = checkHeight(root->right);
+
+        // If right subtree is unbalanced,
+        // no need to continue
+        if (rightHeight == -1)
+            return -1;
+
+        // Check balance condition
+        if (abs(leftHeight - rightHeight) > 1)
+            return -1;
+
+        // Return height of current subtree
+        return 1 + max(leftHeight, rightHeight);
+    }
+
+
+    bool isBalanced(TreeNode* root) {
+
+        // If checkHeight returns -1,
+        // the tree is unbalanced
+        return checkHeight(root) != -1;
+    }
+};
+```
+
+---
+
+## Step-by-Step Example
+
+Consider:
+
+```text
+        1
+       / \
+      2   3
+     / \
+    4   5
+```
+
+We start from the bottom of the tree.
+
+### Node 4
+
+```text
+leftHeight = 0
+rightHeight = 0
+```
+
+Difference:
+
+```text
+|0 - 0| = 0
+```
+
+So node `4` is balanced.
+
+Its height is:
+
+```text
+1 + max(0, 0) = 1
+```
+
+---
+
+### Node 5
+
+Similarly:
+
+```text
+height = 1
+```
+
+---
+
+### Node 2
+
+Its subtrees have heights:
+
+```text
+leftHeight = 1
+rightHeight = 1
+```
+
+Difference:
+
+```text
+|1 - 1| = 0
+```
+
+Therefore, node `2` is balanced.
+
+Height:
+
+```text
+1 + max(1, 1) = 2
+```
+
+---
+
+### Node 3
+
+Node `3` has no children:
+
+```text
+leftHeight = 0
+rightHeight = 0
+```
+
+Therefore:
+
+```text
+height = 1
+```
+
+---
+
+### Node 1
+
+Now:
+
+```text
+leftHeight = 2
+rightHeight = 1
+```
+
+Difference:
+
+```text
+|2 - 1| = 1
+```
+
+Since the difference is not greater than `1`, the tree is balanced.
+
+---
+
+## Why the Original BFS Approach Is Less Efficient
+
+Your original solution does this for every node:
+
+```python
+left_ht = self.height_bin_tree(node.left)
+right_ht = self.height_bin_tree(node.right)
+```
+
+The problem is that `height_bin_tree()` traverses the entire subtree again.
+
+For example:
+
+```text
+        1
+       / \
+      2   3
+     / \
+    4   5
+```
+
+When checking node `1`, you calculate the heights of its subtrees.
+
+Then when checking node `2`, you calculate the heights of its subtrees again.
+
+This causes repeated work.
+
+In the worst case, the BFS + repeated height calculation approach can take:
+
+```text
+O(n²)
+```
+
+time.
+
+---
+
+## Complexity of the Optimized DFS Solution
+
+Each node is visited exactly once.
+
+### Time Complexity
+
+```text
+O(n)
+```
+
+where `n` is the number of nodes.
+
+### Space Complexity
+
+```text
+O(h)
+```
+
+where `h` is the height of the tree, due to the recursion stack.
+
+For a balanced tree:
+
+```text
+O(log n)
+```
+
+For a completely skewed tree:
+
+```text
+O(n)
+```
+
+---
+
+## Key Interview Insight
+
+The important idea is to **combine two operations into one traversal**:
+
+```text
+Height Calculation
+        +
+Balance Checking
+        ↓
+   Single DFS
+```
+
+Instead of:
+
+```text
+For every node:
+    Calculate left height
+    Calculate right height
+    Check balance
+```
+
+we do:
+
+```text
+DFS(left)
+DFS(right)
+Check balance
+Return height
+```
+
+The `-1` value lets us propagate the information that a subtree is already unbalanced without traversing it again.
+
+### Pattern to Remember
+
+This is a common **bottom-up DFS / postorder traversal** pattern:
+
+```cpp
+int dfs(TreeNode* root) {
+
+    if (root == nullptr)
+        return 0;
+
+    int left = dfs(root->left);
+
+    if (left == -1)
+        return -1;
+
+    int right = dfs(root->right);
+
+    if (right == -1)
+        return -1;
+
+    if (abs(left - right) > 1)
+        return -1;
+
+    return 1 + max(left, right);
+}
+```
+
+This pattern is useful whenever you need information from **both children before making a decision about the current node**.
