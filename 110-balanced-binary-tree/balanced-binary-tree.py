@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
+    ## Function to calculate height of the binary tree using BFS approach
     def height_bin_tree(self, root):
         if root == None:
             return 0
