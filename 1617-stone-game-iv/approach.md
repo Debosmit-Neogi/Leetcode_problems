@@ -27,3 +27,82 @@ This is a **deterministic impartial combinatorial game** with optimal substructu
 #### State Definition
 - dp[i] = true if current player can force a win with i stones
 - dp[i] = false if current player will lose with i stones
+
+#### Transition Formula
+- dp[i] = true if ∃ square x² ≤ i such that dp[i - x²] == false
+- dp[i] = false otherwise (all moves lead to dp[remaining] == true)
+
+
+#### Why This Works
+For each possible move `(x²)`:
+1. Current player removes `x²` stones
+2. Remaining: `i - x²` stones for opponent
+3. If `dp[i - x²] == false`, opponent loses → current player wins
+4. If `dp[i - x²] == true`, opponent wins → that move fails
+
+### Algorithm Steps
+
+1. **Initialize**: Create `dp` array of size `n + 1`, all `false`
+2. **Base Case**: `dp[0] = false` (no stones = lose)
+3. **Fill DP** (bottom-up):
+   - For `i = 1` to `n`:
+     - Try every perfect square `x² ≤ i`:
+       - If `dp[i - x²] == false`:
+         - Set `dp[i] = true` and break
+4. **Return**: `dp[n]`
+
+### Complexity Analysis
+
+| Complexity | Value |
+|------------|-------|
+| **Time** | O(n · √n) |
+| **Space** | O(n) |
+
+**Time**: Outer loop runs `n` times, inner loop iterates over perfect squares: √i times → Σᵢ₌₁ⁿ √i = O(n√n)
+
+**Space**: DP array of size `n + 1`
+
+---
+
+## Dry Run Examples
+
+### Example 1: n = 4
+
+Initialize: `dp = [F, F, F, F, F]`
+
+| i | Squares ≤ i | Moves Tested | dp[remaining] | Result | dp[i] |
+|---|-------------|--------------|---------------|--------|-------|
+| 1 | 1 | remaining=0 | dp[0]=F | Winning | T |
+| 2 | 1 | remaining=1 | dp[1]=T | Losing | F |
+| 3 | 1 | remaining=2 | dp[2]=F | Winning | T |
+| 4 | 1,4 | rem(1)=3: dp[3]=T | rem(4)=0: dp[0]=F | Winning | T |
+
+**Final**: `dp[4] = true` → Alice wins!
+
+### Example 2: n = 7
+
+| i | Squares ≤ i | Moves Tested | dp[remaining] | Result | dp[i] |
+|---|-------------|--------------|---------------|--------|-------|
+| 1 | 1 | rem=0: F | Winning | T |
+| 2 | 1 | rem=1: T | Losing | F |
+| 3 | 1 | rem=2: F | Winning | T |
+| 4 | 1,4 | rem(1)=3: T | rem(4)=0: F | Winning | T |
+| 5 | 1,4 | rem(1)=4: T | rem(4)=1: T | Losing | F |
+| 6 | 1,4 | rem(1)=5: F | rem(4)=2: F | Winning | T |
+| 7 | 1,4 | rem(1)=6: T | rem(4)=3: T | Losing | F |
+
+**Final**: `dp[7] = false` → Alice loses!
+
+### DP Table Visualization (n = 7)
+
+
+State: 0 1 2 3 4 5 6 7
+dp: F T F T T F T F
+↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
+L W L W W L W L
+
+
+**Legend**: W = Winning, L = Losing
+
+### Losing Positions Pattern
+0, 2, 5, 7, 10, 12, 15, 17, 20, ...
