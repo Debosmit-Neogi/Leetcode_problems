@@ -96,13 +96,47 @@ Initialize: `dp = [F, F, F, F, F]`
 ### DP Table Visualization (n = 7)
 
 
-State: 0 1 2 3 4 5 6 7
-dp: F T F T T F T F
-↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
-L W L W W L W L
-
+```text
+State:  0  1  2  3  4  5  6  7
+dp:     F  T  F  T  T  F  T  F
+        ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
+        L  W  L  W  W  L  W  L
+```
 
 **Legend**: W = Winning, L = Losing
 
 ### Losing Positions Pattern
 0, 2, 5, 7, 10, 12, 15, 17, 20, ...
+
+Differences: 2, 3, 2, 3, 2, 3, ... (periodicity of 5)
+
+---
+
+## Code Implementation
+
+```cpp
+class Solution {
+public:
+    bool winnerSquareGame(int n) {
+        // dp[i] = true if current player can force a win with i stones
+        vector<bool> dp(n + 1, false);
+        
+        // dp[0] = false: no stones means current player cannot move
+        
+        for (int i = 1; i <= n; i++) {
+            // Try every perfect square <= i
+            for (int x = 1; x * x <= i; x++) {
+                int square = x * x;
+                int remaining = i - square;
+                
+                // If opponent is in losing state, this is a winning move
+                if (dp[remaining] == false) {
+                    dp[i] = true;
+                    break; // One winning move is enough
+                }
+            }
+        }
+        
+        return dp[n];
+    }
+};
