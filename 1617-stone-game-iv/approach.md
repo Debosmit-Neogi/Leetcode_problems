@@ -25,3 +25,5 @@ This is a **deterministic impartial combinatorial game** with optimal substructu
 ### Dynamic Programming Formulation
 
 #### State Definition
+dp[i] = true if current player can force a win with i stones
+dp[i] = false if current player will lose with i stones
