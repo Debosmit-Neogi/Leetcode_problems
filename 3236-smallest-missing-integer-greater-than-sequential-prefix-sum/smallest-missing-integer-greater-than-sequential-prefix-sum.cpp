@@ -4,6 +4,7 @@ public:
         unordered_set<int> present(nums.begin(), nums.end());
 
         int x = k;
+
         while (present.count(x)) {
             x++;
         }
@@ -17,38 +18,38 @@ public:
 
         int max_length = 0;
 
-        // Only start from nums[0]
-        for(int i=0; i<1; i++){
-            int length = 1;
-            temp.clear();
-            temp.push_back(nums[i]);
+        // Prefix must start from index 0
+        int i = 0;
 
-            for(int j = i+1; j<nums.size(); ){
+        int length = 1;
+        temp.clear();
+        temp.push_back(nums[i]);
 
-                if(nums[j] == nums[j-1]+1){
-                    temp.push_back(nums[j]);
-                    length++;
-                    j++;
-                }
+        for(int j = i + 1; j < nums.size(); ) {
 
-                else{
-                    break;
-                }
+            if(nums[j] == nums[j - 1] + 1) {
+                temp.push_back(nums[j]);
+                length++;
+                j++;
             }
-
-            if(length>max_length){
-                prefix_arr = temp;
-                max_length = length;
+            else {
+                break;
             }
+        }
+
+        if(length > max_length) {
+            prefix_arr = temp;
+            max_length = length;
         }
 
         int prefix_sum = 0;
 
-        for(int x:prefix_arr){
+        for(int x : prefix_arr) {
             prefix_sum += x;
         }
 
         int ans = findSmallestMissing(nums, prefix_sum);
+
         return ans;
     }
 };
