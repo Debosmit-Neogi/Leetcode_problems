@@ -15,3 +15,12 @@ Return `true` if it is possible to construct such an array, otherwise return `fa
 ### Examples
 
 **Example 1:**
+`
+Input: nums1 = [1,4,7]
+Output: true
+Explanation:
+Set nums2[0] = nums1[0] = 1.
+Set nums2[1] = nums1[1] - nums1[0] = 4 - 1 = 3.
+Set nums2[2] = nums1[2] = 7.
+nums2 = [1, 3, 7], and all elements are odd. Thus, the answer is true.
+`
