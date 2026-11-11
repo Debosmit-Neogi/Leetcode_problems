@@ -32,4 +32,12 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3693-climbing-stairs-ii](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3693-climbing-stairs-ii/) | Medium |
+## Math
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3789-minimum-cost-to-acquire-required-items](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3789-minimum-cost-to-acquire-required-items/) | Medium |
+## Greedy
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3789-minimum-cost-to-acquire-required-items](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3789-minimum-cost-to-acquire-required-items/) | Medium |
 <!---LeetCode Topics End-->
