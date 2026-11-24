@@ -8,6 +8,7 @@
 | [1385-find-the-distance-value-between-two-arrays](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/1385-find-the-distance-value-between-two-arrays/) | Easy |
 | [2567-minimum-score-by-changing-two-elements](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/2567-minimum-score-by-changing-two-elements/) | Medium |
 | [2747-count-zero-request-servers](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/2747-count-zero-request-servers/) | Medium |
+| [3411-maximum-subarray-with-equal-products](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3411-maximum-subarray-with-equal-products/) | Easy |
 | [3420-count-non-decreasing-subarrays-after-k-operations](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3420-count-non-decreasing-subarrays-after-k-operations/) | Hard |
 | [3693-climbing-stairs-ii](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3693-climbing-stairs-ii/) | Medium |
 ## Two Pointers
@@ -32,6 +33,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2747-count-zero-request-servers](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/2747-count-zero-request-servers/) | Medium |
+| [3411-maximum-subarray-with-equal-products](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3411-maximum-subarray-with-equal-products/) | Easy |
 | [3420-count-non-decreasing-subarrays-after-k-operations](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3420-count-non-decreasing-subarrays-after-k-operations/) | Hard |
 ## Dynamic Programming
 | Problem Name | Difficulty |
@@ -41,6 +43,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1352-product-of-the-last-k-numbers](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/1352-product-of-the-last-k-numbers/) | Medium |
+| [3411-maximum-subarray-with-equal-products](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3411-maximum-subarray-with-equal-products/) | Easy |
 | [3789-minimum-cost-to-acquire-required-items](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3789-minimum-cost-to-acquire-required-items/) | Medium |
 ## Greedy
 | Problem Name | Difficulty |
@@ -79,4 +82,12 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1352-product-of-the-last-k-numbers](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/1352-product-of-the-last-k-numbers/) | Medium |
+## Enumeration
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3411-maximum-subarray-with-equal-products](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3411-maximum-subarray-with-equal-products/) | Easy |
+## Number Theory
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3411-maximum-subarray-with-equal-products](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3411-maximum-subarray-with-equal-products/) | Easy |
 <!---LeetCode Topics End-->
