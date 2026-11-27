@@ -12,6 +12,7 @@
 | [3420-count-non-decreasing-subarrays-after-k-operations](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3420-count-non-decreasing-subarrays-after-k-operations/) | Hard |
 | [3693-climbing-stairs-ii](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3693-climbing-stairs-ii/) | Medium |
 | [3934-smallest-unique-subarray](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3934-smallest-unique-subarray/) | Hard |
+| [3946-maximum-number-of-items-from-sale-i](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3946-maximum-number-of-items-from-sale-i/) | Medium |
 ## Two Pointers
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -42,6 +43,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3693-climbing-stairs-ii](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3693-climbing-stairs-ii/) | Medium |
+| [3946-maximum-number-of-items-from-sale-i](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3946-maximum-number-of-items-from-sale-i/) | Medium |
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -53,6 +55,7 @@
 | ------- | ------- |
 | [2567-minimum-score-by-changing-two-elements](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/2567-minimum-score-by-changing-two-elements/) | Medium |
 | [3789-minimum-cost-to-acquire-required-items](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3789-minimum-cost-to-acquire-required-items/) | Medium |
+| [3946-maximum-number-of-items-from-sale-i](https://github.com/Debosmit-Neogi/Leetcode_problems/tree/main/3946-maximum-number-of-items-from-sale-i/) | Medium |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
